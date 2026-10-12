@@ -22,34 +22,43 @@ window.fetch = async (e, i) => {
   );
 };
 
-const yo = make_fetch_parser(() => "/test", 2000, {
-  test: "?b",
-  then: "n",
-  arr_fixed: [3, "n"],
-  arr_fixed_obj: [
-    3,
-    {
+const yo = make_fetch_parser(
+  () => "/test",
+  2000,
+  {
+    test: "?b",
+    then: "nw",
+    arr_fixed: [3, "nw"],
+    arr_fixed_obj: [
+      3,
+      {
+        test: "?b",
+      },
+    ],
+    arr_dyn: [0, "n"],
+    arr_dyn_obj: [0, { test: "?b" }],
+    obj: {
       test: "?b",
     },
-  ],
-  arr_dyn: [0, "n"],
-  arr_dyn_obj: [0, { test: "?b" }],
-  obj: {
-    test: "?b",
   },
-});
+  async (a) => {
+    console.warn(a);
+  },
+);
 
 yo[FETCH_PARSE].then((v) => {
   console.warn(v);
 });
 
-yo.test.sub((v) => {
-  console.warn(v);
-});
+yo.then.write("test data");
 
-yo.then.sub((v) => {
-  console.warn(v);
-});
+// yo.test.sub((v) => {
+//   console.warn(v);
+// });
+
+// yo.then.sub((v) => {
+//   console.warn(v);
+// });
 
 // yo.obj[FETCH_PARSE].then((v) => {
 //   console.warn(v);
@@ -62,6 +71,8 @@ yo.then.sub((v) => {
 // yo.arr_fixed[1][FETCH_PARSE].then((v) => {
 //   console.warn(v);
 // });
+
+yo.arr_fixed[1][FETCH_PARSE].write(5);
 
 // yo.arr_fixed_obj[1].test.then((v) => {
 //   console.warn(v);
