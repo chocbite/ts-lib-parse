@@ -35,6 +35,7 @@
   },
   "devDependencies": {
     "@chocbite/ts-supplement-eslint": "^2.0.0",
+    "@chocbite/ts-lib-common": "^2.0.0",
     "@vitest/browser-playwright": "^5.0.4",
     "eslint": "^10.12.0",
     "tsdown": "^0.23.1",

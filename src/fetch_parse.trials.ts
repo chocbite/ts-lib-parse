@@ -1,4 +1,4 @@
-import { array_from_length } from "./array";
+import { array_from_length } from "@chocbite/ts-lib-common";
 import { FETCH_PARSE, make_fetch_parser } from "./fetch_parse";
 
 let zxcv = 0;
@@ -11,9 +11,9 @@ window.fetch = async (e, i) => {
         test: true,
         then: zxcv++,
         arr_fixed: [1, 2, 3],
-        arr_fixed_obj: array_from_length(3, (i) => ({ test: false })),
+        arr_fixed_obj: array_from_length(3, () => ({ test: false })),
         arr_dyn: array_from_length(Math.min(3, abc++), (i) => i),
-        arr_dyn_obj: array_from_length(Math.min(3, abc++), (i) => ({
+        arr_dyn_obj: array_from_length(Math.min(3, abc++), () => ({
           test: false,
         })),
         obj: { test: false },
